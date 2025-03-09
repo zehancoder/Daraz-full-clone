@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "img": "https://img.drz.lazcdn.com/static/bd/p/f04419b282ffb5da327ef1f06c97e329.jpg_400x400q80.jpg",
+        "text": "Gree GS-18XPUV32 1.5 Ton Pular Split Type Inverter Air Conditioner",
+        "price": "64,999",
+        "discount": "79,890",
+        "parcent": "-19%"
+    },
+    {
+        "id": 2,
+        "img": "https://img.drz.lazcdn.com/static/bd/p/1aab7c168584d42f0fe31aba013bdad9.png_400x400q80.png",
+        "text": "Haier H43P7UX 43 Inch 4K UHD Google Television",
+        "price": "37,990",
+        "discount": "52,900",
+        "parcent": "-28%"
+    },
+    {
+        "id": 1,
+        "img": "https://img.drz.lazcdn.com/static/bd/p/1cc06bdaff4277dba60c93e6bd21b330.jpg_400x400q80.jpg",
+        "text": "(FP-M-20) Smart Executive  office chair China mesh better quality product",
+        "price": "3,295",
+        "discount": "4,500",
+        "parcent": "-27%"
+    },
+    {
+        "id": 1,
+        "img": "https://img.drz.lazcdn.com/static/bd/p/1ac2d33ca9db32071d62161c3df04825.jpg_400x400q80.jpg",
+        "text": "Realme Note 60x",
+        "price": "10,842",
+        "discount": "10,990",
+        "parcent": "-1%"
+    },
+    {
+        "id": 1,
+        "img": "https://img.drz.lazcdn.com/g/kf/S1b4ca388cd744d0b968f6e026e6b4b5af.jpg_400x400q80.jpg",
+        "text": "1.5-Inch x 93 cm Large Sponge Door Bottom Sealing Strip | Effective Air & Dust Draft Stopper | MULTI-COLOR Door Draft Shield",
+        "price": "64,999",
+        "discount": "79,890",
+        "parcent": "-19%"
+    },
+    {
+        "id": 1,
+        "img": "https://img.drz.lazcdn.com/g/kf/S6bbc1c2130aa41899a0e02a3485ca9e63.jpg_400x400q80.jpg",
+        "text": "Butterfly shaped home decorating wall light | Color changing LED Wall Sticker | Single (1) Piece",
+        "price": "29",
+        "discount": "69",
+        "parcent": "-61%"
+    }
+]
