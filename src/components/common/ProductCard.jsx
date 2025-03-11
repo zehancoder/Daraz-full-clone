@@ -1,6 +1,7 @@
 import { cn } from "../../classReplaceing/replace";
 
 export const ProductCard = ({
+  className,
   img,
   text,
   price,
@@ -10,7 +11,7 @@ export const ProductCard = ({
 }) => {
   return (
     <>
-      <div className="w-[188px] h-[290px] font-noto bg-white shadow">
+      <div className={cn("w-[188px] px-2 py-2 h-[290px] font-noto bg-white", className)}>
         <div className="">
           {/* images */}
           {img}

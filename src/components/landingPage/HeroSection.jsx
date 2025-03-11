@@ -1,15 +1,18 @@
 import { Container } from "../common/Container";
+import { CategoryItem } from "./Category";
+import { FlashSaleItem } from "./Flashsale";
+import { ForyouProduct } from "./JustforYouProduct";
 import Slider from "./Slider";
 import { ImStarFull } from "react-icons/im";
 
 export const HeroSec = () => {
   return (
     <>
-      <div>
+      <div className="-z-50">
         <Container>
-          <div className="w-full xl:grid grid-cols-12">
+          <div className="w-full xl:grid grid-cols-12 ">
             <Slider className={"col-span-12 xl:col-span-10"} />
-            <div className="customBg py-4 flex gap-4 md:block col-span-12  xl:col-span-2 w-full md:w-[220px] xl:mt-0 mt-3 xl:px-0 px-2">
+            <div className="customBg py-1 flex gap-4 md:block col-span-12  xl:col-span-2 w-full md:w-[220px] xl:mt-0 mt-3 xl:px-0 px-2">
               <div>
                 <div className="flex items-center gap-3 xl:w-auto w-20">
                   <img
@@ -55,13 +58,13 @@ export const HeroSec = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex md:flex-row flex-col items-center mt-4">
+              <div className="flex md:flex-row flex-col items-center mt-2">
                 <img
-                  className="w-32 md:w-28"
+                  className="w-32 md:w-24"
                   src="https://img.drz.lazcdn.com/g/tps/imgextra/i1/O1CN01EJwZkh1TCWAEThhF0_!!6000000002346-0-tps-150-150.jpg_360x360q80.jpg"
                   alt=""
                 />
-                <div className="px-3 md:w-auto w-auto m-2">
+                <div className="px-1 md:w-auto w-auto m-1">
                   <a href="https://apps.apple.com/bd/app/daraz-online-shopping-app/id978058048">
                     <img
                       className="w-26"
@@ -80,6 +83,18 @@ export const HeroSec = () => {
               </div>
             </div>
           </div>
+          {/* mega eid sale section */}
+          <section className="w-full">
+            <div className="w-full ">
+              <img className="w-full md:h-[185px]" src="/images/megaSale.gif" alt="" />
+            </div>
+          </section>
+          {/* flash sale section */}
+          <FlashSaleItem/>
+          {/* Category Item */}
+          <CategoryItem/>
+          {/* products */}
+          <ForyouProduct/>
         </Container>
       </div>
     </>

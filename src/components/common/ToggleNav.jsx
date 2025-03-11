@@ -14,7 +14,7 @@ export const Toggle = ({toggle, setToggle}) => {
     
   return (
     <>
-      <div className={`absolute w-full top-full left-0 md:hidden block transition-all duration-300  transform ${toggle ? "translate-y-0 z-20" : "-translate-y-[100%] -z-20"}`}>
+      <div className={`absolute w-full top-full left-0 md:hidden block transition-all duration-300  transform ${toggle ? "translate-y-0 z-50" : "-translate-y-[100%] -z-20"}`}>
         <Container className={"bg-[#f85606] px-2 py-4"}>
           <div>
             <div className="items-center mb-3 justify-around font-roboto gap-5 md:flex">
