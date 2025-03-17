@@ -1,9 +1,12 @@
+import { useState } from "react";
 import myData from "../../data/category.json";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 export const CategoryItem = () => {
+  let [allCate, setAllCate] = useState(false)
+  const viewAllCate = () => {setAllCate(!allCate)};
   return (
     <>
-      <div className="py-5">
+      <div className={`py-5 transition-height duration-300 md:h-auto overflow-hidden ${allCate ? "h-auto" : "h-[444px]"}`}>
         <h1 className="text-xl md:text-2xl mb-2 font-medium font-noto text-mediumGray">
           Categories
         </h1>
@@ -43,6 +46,13 @@ export const CategoryItem = () => {
             )
           )}
         </div>
+      </div>
+      <div className="px-5 mt-4 md:hidden flex cursor-pointer" onClick={viewAllCate}>
+        <p className="text-center text-[14px] text-gray-700 rounded font-noto font-bold border py-2 px-5  mx-auto">
+          {
+            allCate ? "Hide Category" : "View All Category"
+          }
+        </p>
       </div>
     </>
   );
