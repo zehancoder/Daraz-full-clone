@@ -1,5 +1,5 @@
 import "./App.css";
-import { Heading } from "./components/common/header";
+import { Heading } from "./components/common/Headings";
 import { ProductCard } from "./components/common/ProductCard";
 import { HeroSec } from "./components/landingPage/HeroSection";
 import Slider from "./components/landingPage/Slider";
