@@ -16,7 +16,7 @@ export const ForyouProduct = () => {
     }, 1000);
   };
 
-  console.log(newEle);
+
   return (
     <>
       <div className="px-3 md:px-0 md:mt-0 mt-5">
@@ -26,7 +26,7 @@ export const ForyouProduct = () => {
           </h1>
           <div className="flex items-center gap-3 flex-wrap space-y-4">
             {slice.map(({ img, price, discount, rating, star, text }, i) => (
-              <div>
+              <div key={i}>
                 <Link key={i} to={"/forYouItem"} className="xl:mx-0 mx-auto">
                   <ProductCard
                     className={"hover:shadow-xl w-[203px]"}
@@ -36,9 +36,9 @@ export const ForyouProduct = () => {
                     price={price}
                     discount={discount}
                     star={
-                      <div className="flex items-center gap-1">
-                        {star.map((item) => (
-                          <div>
+                      <div  className="flex items-center gap-1">
+                        {star.map((item, i) => (
+                          <div key={i}>
                             <img src={item} alt="" className="w-3 mt-2" />
                           </div>
                         ))}

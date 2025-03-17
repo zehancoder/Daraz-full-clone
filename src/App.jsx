@@ -1,5 +1,5 @@
 import "./App.css";
-import { Header } from "./components/common/header";
+import { Heading } from "./components/common/header";
 import { ProductCard } from "./components/common/ProductCard";
 import { HeroSec } from "./components/landingPage/HeroSection";
 import Slider from "./components/landingPage/Slider";
@@ -9,9 +9,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Heading />
         <Routes>
-          <Route path="/" element= {<HeroSec></HeroSec>}/>
+          <Route path="/" element={<HeroSec></HeroSec>} />
         </Routes>
       </BrowserRouter>
     </>

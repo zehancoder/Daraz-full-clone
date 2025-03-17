@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Toggle } from "./ToggleNav";
 import { IoCloseSharp } from "react-icons/io5";
 
-export const Header = () => {
+export const Heading = () => {
   const [toggle, setToggle] = useState(false);
   const toggleNav = () => {
     setToggle(!toggle);

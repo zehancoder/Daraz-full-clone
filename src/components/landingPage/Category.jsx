@@ -15,7 +15,7 @@ export const CategoryItem = () => {
             i >= 8 ? (
               ""
             ) : (
-              <Link to={"/allCategory"} className="hover:shadow-2xl">
+              <Link key={i} to={"/allCategory"} className="hover:shadow-2xl">
                 <div className="w-[158px] h-48 bg-white flex flex-col items-center justify-center">
                   <div className="p-2 h-28 ">
                     <img className="w-20 " src={img} alt="" />
@@ -33,7 +33,7 @@ export const CategoryItem = () => {
             i < 8 ? (
               ""
             ) : (
-              <Link to={"/allCategory"} className="hover:shadow-2xl ">
+              <Link key={i} to={"/allCategory"} className="hover:shadow-2xl ">
                 <div className="w-[158px] h-48 bg-white flex flex-col items-center justify-center">
                   <div className="p-2 h-28 ">
                     <img className="w-20 " src={img} alt="" />
