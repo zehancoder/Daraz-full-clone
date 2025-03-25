@@ -16,7 +16,7 @@ export const ProductCard = ({
           {/* images */}
           {img}
         </div>
-        <div className="px-2 py-1">
+        <div className="px-2 py-1 ">
           {/* driscription */}
           <p className="styleing text-[14px] font-[400]">{text}</p>
           {/* pricing */}

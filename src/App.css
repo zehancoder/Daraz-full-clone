@@ -25,7 +25,9 @@
   background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0)), linear-gradient(179.27deg, #ffedd6 .83%, #ffc3e3 46.78%, #fff 99.57%), linear-gradient(0deg, #fff, #fff);
 }
 
-
+.shadows{
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.432);
+}
 
 .container {
   max-width: 1200px;
