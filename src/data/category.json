@@ -1,67 +1,83 @@
 [
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/567fa20263eefac58e4de7850fd77068.jpg_170x170q80.jpg",
-        "text": "High School"
+        "text": "High School",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/86e2948e63a261e85bad1287619589e9.jpg_170x170q80.jpg",
-        "text": "Monoculars"
+        "text": "Monoculars",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/561f3a4d7a341ecfe5d974c082ef84b2.jpg_170x170q80.jpg",
-        "text": "Other Projector Accessories"
+        "text": "Other Projector Accessories",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/e19f6872995ab25912db88c7f96637d8.jpg_170x170q80.jpg",
-        "text": "Kitchen Fittings"
+        "text": "Kitchen Fittings",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/g/kf/S441d1df3eac24228b79bfc75390e9c1ff.jpg_170x170q80.jpg",
-        "text": "Womens Fashion"
+        "text": "Womens Fashion",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/fd91a51ae1b12f173ab131ca555d61dd.jpg_170x170q80.jpg",
-        "text": "Bedding Sets"
+        "text": "Bedding Sets",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/ad90af271627f52111a195a6c22eb8d2.jpg_170x170q80.jpg",
-        "text": "Lamp Shades"
+        "text": "Lamp Shades",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/6f54b15dadb27d1d9322a0afb5aa00ab.jpg_170x170q80.jpg",
-        "text": "Cow"
+        "text": "Cow",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/45b420d04a20aa33b5131a56c0819fda.jpg_170x170q80.jpg",
-        "text": "First Aid Supplies"
+        "text": "First Aid Supplies",
+        "link": "/mensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/5993cc0bbadebb3774f83daaf6f2d725.jpg_170x170q80.jpg",
-        "text": "Beans & Chickpeas"
+        "text": "Beans & Chickpeas",
+        "link": "/womensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/daa2deffadca48ca32677a23ea11d580.jpg_170x170q80.jpg",
-        "text": "Others"
+        "text": "Others",
+        "link": "/womensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/fd91a51ae1b12f173ab131ca555d61dd.jpg_170x170q80.jpg",
-        "text": "Bedding Sets"
+        "text": "Bedding Sets",
+        "link": "/womensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd//p/5b3f71aa3fe53fd39f0e7791d37a12d8.jpg_170x170q80.jpg",
-        "text": "Lotion, Cream and Scrubs"
+        "text": "Lotion, Cream and Scrubs",
+        "link": "/womensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/5bba611297c8963ff3af3d00101245b0.jpg_170x170q80.jpg",
-        "text": "Pools"
+        "text": "Pools",
+        "link": "/womensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/static/bd/p/c77f039935885dfa251070f5a709908d.jpg_170x170q80.jpg",
-        "text": "Margarine & Spread"
+        "text": "Margarine & Spread",
+        "link": "/womensFassion"
     },
     {
         "img": "https://img.drz.lazcdn.com/g/kf/S5a9dc65cc69b4053a7972c09bd65f2880.jpg_170x170q80.jpg",
-        "text": "First Aid Supplies"
+        "text": "First Aid Supplies",
+        "link": "/womensFassion"
     }
 
 ]

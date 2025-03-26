@@ -129,3 +129,10 @@
 .load-button:hover:not(:disabled) {
   background-color: #1976d2;
 }
+
+.openItem{
+  display: none;
+}
+.openEffect:hover .openItem{
+  display: block;
+}
