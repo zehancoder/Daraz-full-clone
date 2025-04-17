@@ -9,7 +9,7 @@ import { Massege } from "../common/Massege";
 import { CategoryHeader } from "../CategoryHeader";
 import { ViewItem } from "../common/ViewItem";
 
-export const ForyouProduct = () => {
+export const ForyouProduct = ({elementId}) => {
   const [newEle, setNewEle] = useState(20);
   const [load, setLoad] = useState(false);
   const slice = myData.slice(0, newEle);
@@ -30,6 +30,7 @@ export const ForyouProduct = () => {
       setItemId(parseInt(e.target.previousElementSibling.id));
     }
   };
+  elementId.IdHandler(itemId)
   const closeViewItem = () => {
     setClick(false);
   };
@@ -72,10 +73,10 @@ export const ForyouProduct = () => {
                     text={text}
                   />
                 </div>
-                <div
+                <Link to={"/viewItem"}
                   className="absolute top-0 left-0 h-full w-full cursor-pointer"
                   id={i + 1}
-                ></div>
+                ></Link>
               </div>
             ))}
           </div>
@@ -110,8 +111,13 @@ export const ForyouProduct = () => {
       >
         <div className="md:h-32 h-16"></div>
         <div></div>
+
+        {/* Category Header */}
         <CategoryHeader />
-        <ViewItem/>
+
+        {/* item viewer */}
+        {/* <ViewItem closeViewItem={closeViewItem} /> */}
+
         {/* <Container>
           {click ? (
             <div className="">

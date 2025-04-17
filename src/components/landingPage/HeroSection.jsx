@@ -5,7 +5,7 @@ import { ForyouProduct } from "./JustforYouProduct";
 import Slider from "./Slider";
 import { ImStarFull } from "react-icons/im";
 
-export const HeroSec = () => {
+export const HeroSec = (props) => {
   return (
     <>
       <div className="-z-50">
@@ -94,7 +94,7 @@ export const HeroSec = () => {
           {/* Category Item */}
           <CategoryItem/>
           {/* products */}
-          <ForyouProduct/>
+          <ForyouProduct elementId = {props}/>
         </Container>
       </div>
     </>
