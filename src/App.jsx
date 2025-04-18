@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import { ViewItem } from "./components/common/ViewItem";
 import { ForyouProduct } from "./components/landingPage/JustforYouProduct";
+import { Massege } from "./components/common/Massege";
 function App() {
   const [productID, setProductID] = useState(null)
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/viewItem" element={<ViewItem productId ={productID}></ViewItem>}/>
           <Route path="/forYouItem" element= {<ForYouItem/>}/>
         </Routes>
+        <Massege/>
       </BrowserRouter>
     </>
   );

@@ -16,6 +16,11 @@ import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { BuyBTn, SellBTn } from "./ProductButtons";
+import { LazadaIcon } from "./Icons/LazadaIcons";
+import { CiLocationOn } from "react-icons/ci";
+import { CiDeliveryTruck } from "react-icons/ci";
+import { GiReceiveMoney } from "react-icons/gi";
+import { ProductLeftInfos } from "./ProductLeftInfo";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -82,28 +87,29 @@ export const ViewItem = ({ productId }) => {
   // quantity
   const [Itemquantity, setQuantity] = useState(1);
   const quantityUp = () => {
-
-      Itemquantity >= 15 ? setQuantity(15) :  setQuantity(Itemquantity + 1);
-    
-  }
+    Itemquantity >= 15 ? setQuantity(15) : setQuantity(Itemquantity + 1);
+  };
   const quantityDown = () => {
-      Itemquantity == 1 ? setQuantity(1) : setQuantity(Itemquantity - 1);
-  }
+    Itemquantity == 1 ? setQuantity(1) : setQuantity(Itemquantity - 1);
+  };
 
   //hover iamge track
-  const [hoverImgSrc, setHoverImgSrc] = useState(null)
+  const [hoverImgSrc, setHoverImgSrc] = useState(null);
   const hoverImage = (e) => {
     setHoverImgSrc(e.target.src);
-  }
+  };
   const mouseLeave = () => {
-    setHoverImgSrc(null)
-  }
+    setHoverImgSrc(null);
+  };
   return (
     <>
       <div>
-        <Container className="bg-white px-2 py-1">
-          <div className="flex md:flex-row flex-col gap-2">
-            <div className="w-[90%]  mx-auto md:w-[30%] ml-5" onMouseLeave={mouseLeave}>
+        <Container className="bg-white px-2 py-4 flex xl:flex-row flex-col">
+          <div className="flex md:flex-row flex-col gap-2 w-full xl:w-[70%] pb-6">
+            <div
+              className="w-[90%]  mx-auto md:w-[40%] ml-5"
+              onMouseLeave={mouseLeave}
+            >
               <div className="h-96 md:w-[80%]">
                 <img
                   src={hoverImgSrc == null ? img : hoverImgSrc}
@@ -119,15 +125,16 @@ export const ViewItem = ({ productId }) => {
                     <div key={i} className="h-16 w-5 cursor-pointer">
                       <img
                         src={img}
-                        className="bg-contain w-full h-full object-contain -z-20" onMouseOver={hoverImage} 
+                        className="bg-contain w-full h-full object-contain -z-20"
+                        onMouseOver={hoverImage}
                       ></img>
                     </div>
                   ))}
                 </Slider>
               </div>
             </div>
-            <div className="w-[100%] md:w-[70%] px-3 text-center md:text-start md:mx-0 mx-auto">
-              <div className="md:w-[80%] border-b border-gray-200">
+            <div className="w-[100%] md:w-[60%] px-3 text-center md:text-start md:mx-0 mx-auto">
+              <div className="w-full border-b border-gray-200">
                 <h1 className="font-noto text-[16px] md:py-0 py-4 md:mt-4 mt-4 md:text-xl font-[400] text-[#212121] max-w-lg">
                   {/* text */}
                   {text}
@@ -153,29 +160,41 @@ export const ViewItem = ({ productId }) => {
                           shareDiv ? "block" : "hidden"
                         } bg-white md:mt-2 px-3 py-2  customShadow h-28 w-52 md:right-0 right-3  absolute z-50 text-3xl font-bold font-roboto `}
                       >
-                        <p className="text-[14px] text-[#202020] md:text-[16px] font-noto font-normal mt-5 px-3">Share Via:</p>
-                        <div className="absolute top-0 right-4 h-16 w-16 rotate-[135deg] bg-white customBorder">
-
-                        </div>
+                        <p className="text-[14px] text-[#202020] md:text-[16px] font-noto font-normal mt-5 px-3">
+                          Share Via:
+                        </p>
+                        <div className="absolute top-0 right-4 h-16 w-16 rotate-[135deg] bg-white customBorder"></div>
                         <div className="flex items-center justify-around mt-3">
-                        <Link
-                          className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
-                          to="https://www.facebook.com/"
-                        >
-                         <img className="w-8 " src="https://img.lazcdn.com/us/media/757a279866786e7ad865f47ea86a8b2b-396-396.png_80x80q80.png_.webp" alt="" />
-                        </Link>
-                        <Link
-                          className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
-                          to="https://www.whatsapp.com/"
-                        >
-                          <img className="w-8 " src="https://img.lazcdn.com/us/media/1c7bd6703f72e9313ce8df74e11438af-396-396.png_80x80q80.png_.webp" alt="" />
-                        </Link>
-                        <Link
-                          className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
-                          to="https://x.com/?lang=en"
-                        >
-                          <img className="w-8 " src="https://img.lazcdn.com/us/media/65a5210f010d98456396e5264152d40d-396-396.png_80x80q80.png_.webp" alt="" />
-                        </Link>
+                          <Link
+                            className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
+                            to="https://www.facebook.com/"
+                          >
+                            <img
+                              className="w-8 "
+                              src="https://img.lazcdn.com/us/media/757a279866786e7ad865f47ea86a8b2b-396-396.png_80x80q80.png_.webp"
+                              alt=""
+                            />
+                          </Link>
+                          <Link
+                            className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
+                            to="https://www.whatsapp.com/"
+                          >
+                            <img
+                              className="w-8 "
+                              src="https://img.lazcdn.com/us/media/1c7bd6703f72e9313ce8df74e11438af-396-396.png_80x80q80.png_.webp"
+                              alt=""
+                            />
+                          </Link>
+                          <Link
+                            className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
+                            to="https://x.com/?lang=en"
+                          >
+                            <img
+                              className="w-8 "
+                              src="https://img.lazcdn.com/us/media/65a5210f010d98456396e5264152d40d-396-396.png_80x80q80.png_.webp"
+                              alt=""
+                            />
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -228,16 +247,26 @@ export const ViewItem = ({ productId }) => {
               </div>
               {/* quantity */}
               <div>
-                <div className="flex items-center max-w-[33%] mt-4 ml-4 justify-between">
+                <div className="flex items-center w-[80%] md:max-w-[50%] mt-4 ml-4 justify-between">
                   <p className="text-[14px] select-none  md:text-[15px] font-noto font-[400] text-[#757575]">
                     Quantity
                   </p>
                   <div className="w-40 flex items-center">
-                    <div className={`text-[14px] font-noto py-2 px-3 font-extralight cursor-pointer ${Itemquantity > 1 ? "bg-gray-300" : "bg-gray-100"}`} onClick={quantityDown}>
+                    <div
+                      className={`text-[14px] font-noto py-2 px-3 font-extralight cursor-pointer ${
+                        Itemquantity > 1 ? "bg-gray-300" : "bg-gray-100"
+                      }`}
+                      onClick={quantityDown}
+                    >
                       <FaMinus />
                     </div>
                     <div className="px-4 py-2 select-none">{Itemquantity}</div>
-                    <div className={`"text-xl font-noto px-3 py-2 font-bold cursor-pointer  ${Itemquantity == 15 ? "bg-gray-100" : "bg-gray-300"}`} onClick={quantityUp}>
+                    <div
+                      className={`"text-xl font-noto px-3 py-2 font-bold cursor-pointer  ${
+                        Itemquantity == 15 ? "bg-gray-100" : "bg-gray-300"
+                      }`}
+                      onClick={quantityUp}
+                    >
                       <IoMdAdd />
                     </div>
                   </div>
@@ -245,13 +274,13 @@ export const ViewItem = ({ productId }) => {
               </div>
 
               <div className="mt-12 flex items-center gap-3">
-                <BuyBTn/>
-                <SellBTn/>
+                <BuyBTn className={"w-[40%]"} />
+                <SellBTn className={"w-[40%]"} />
               </div>
             </div>
-
-            
           </div>
+          {/* location & product information */}
+         <ProductLeftInfos/>
         </Container>
       </div>
     </>

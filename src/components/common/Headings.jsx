@@ -40,7 +40,7 @@ export const Heading = () => {
               </div>
               <div className="flex justify-between items-center gap-5 h-full md:h-28 max-w-5xl mx-auto font-roboto">
                 <img
-                  className="w-36"
+                  className="w-28 md:w-36"
                   src="https://lzd-img-global.slatic.net/us/domino/3b870cb043c7f8a9741cbf66329e294e.png"
                   alt=""
                 />
@@ -59,7 +59,7 @@ export const Heading = () => {
                     <CiShoppingCart className="text-4xl text-white" />
                   </Link>
                 </div>
-                <div className="flex md:hidden items-center gap-6">
+                <div className="flex md:hidden items-center gap-3">
                   <Link
                     to={"/login"}
                     className="px-3 py-1 bg-gray-200 rounded-full "
