@@ -18,7 +18,7 @@ export const FlashSaleItem = () => {
           </div>
           <div className="flex flex-wrap items-center justify-center lg:justify-between bg-white gap-3">
             {myData.map(({ img, text, id, parcent, price, discount }) => (
-              <Link key={id} to={"/shopAll"}>
+              <Link key={id} to="/shopAll">
                 <div>
                   <ProductCard
                     className={"hover:shadow-xl cursor-pointer"}

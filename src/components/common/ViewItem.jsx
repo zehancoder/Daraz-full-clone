@@ -21,6 +21,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { GiReceiveMoney } from "react-icons/gi";
 import { ProductLeftInfos } from "./ProductLeftInfo";
+import { CategoryHeader } from "../CategoryHeader";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -103,8 +104,9 @@ export const ViewItem = ({ productId }) => {
   };
   return (
     <>
+    <CategoryHeader/>
       <div>
-        <Container className="bg-white px-2 py-4 flex xl:flex-row flex-col">
+        <Container className="bg-white justify-between px-2 py-4 flex xl:flex-row  flex-col">
           <div className="flex md:flex-row flex-col gap-2 w-full xl:w-[70%] pb-6">
             <div
               className="w-[90%]  mx-auto md:w-[40%] ml-5"
@@ -118,7 +120,7 @@ export const ViewItem = ({ productId }) => {
                 />
                 {/* {myData[2].img} */}
               </div>
-              <div className=" slider-container mt-2 w-[300px]">
+              <div className=" slider-container mt-2 w-[200px] md:mx-0 mx-auto md:w-[300px]">
                 <Slider {...settings} className="space-x-2 ">
                   {/* product all images */}
                   {allImages.map((img, i) => (
@@ -158,12 +160,12 @@ export const ViewItem = ({ productId }) => {
                       <div
                         className={`${
                           shareDiv ? "block" : "hidden"
-                        } bg-white md:mt-2 px-3 py-2  customShadow h-28 w-52 md:right-0 right-3  absolute z-50 text-3xl font-bold font-roboto `}
+                        } bg-white md:mt-2 px-3 py-2  customShadow h-28 w-52 md:right-0 right-2  absolute z-50 text-3xl font-bold font-roboto `}
                       >
                         <p className="text-[14px] text-[#202020] md:text-[16px] font-noto font-normal mt-5 px-3">
                           Share Via:
                         </p>
-                        <div className="absolute top-0 right-4 h-16 w-16 rotate-[135deg] bg-white customBorder"></div>
+                        <div className="absolute top-0 right-3 md:right-4 h-10 md:h-16 w-10 md:w-16 rotate-[135deg] bg-white customBorder"></div>
                         <div className="flex items-center justify-around mt-3">
                           <Link
                             className="transform transition duration-200 hover:scale-105 hover:-translate-0.5"
@@ -282,6 +284,7 @@ export const ViewItem = ({ productId }) => {
           {/* location & product information */}
          <ProductLeftInfos/>
         </Container>
+
       </div>
     </>
   );
