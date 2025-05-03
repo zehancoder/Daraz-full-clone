@@ -1,4 +1,6 @@
+import { CommonFooter } from "../common/CommonFooter";
 import { Container } from "../common/Container";
+import { LoginPage } from "../common/Login";
 import { CategoryItem } from "./Category";
 import { FlashSaleItem } from "./Flashsale";
 import { ForyouProduct } from "./JustforYouProduct";
@@ -95,7 +97,9 @@ export const HeroSec = (props) => {
           <CategoryItem/>
           {/* products */}
           <ForyouProduct elementId = {props}/>
+          <CommonFooter/>
         </Container>
+        <LoginPage/>
       </div>
     </>
   );

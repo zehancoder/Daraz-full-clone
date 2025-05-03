@@ -146,3 +146,7 @@
 .customBorder{
   border-top-right-radius: 100%;
 }
+
+.formShadow{
+  box-shadow: 0 0 400px 700px rgba(27, 27, 27, 0.589);
+}
