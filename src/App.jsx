@@ -21,18 +21,24 @@ function App() {
 
   const [loginStart, setLoginStart] = useState(false);
 
+  const [loginSuccess, setLoginSuccess] = useState(null)
 
+  // add forgot password functionality
+  const [forgotPass, setForgotPass] = useState(false);
+  const forgotPssHandler = (ans) => {
+    setForgotPass(ans);
+  };
   return (
     <>
       <BrowserRouter >
-        <Heading setLoginStart = {setLoginStart} loginStart = {loginStart}/>
+        <Heading setLoginStart = {setLoginStart} loginStart = {loginStart} loginSuccess={loginSuccess} />
         <Routes>
           <Route path="/" element={<HeroSec IdHandler = {IdHandler}></HeroSec>} />
           <Route path="/viewItem" element={<ViewItem productId ={productID}></ViewItem>}/>
           <Route path="/forYouItem" element= {<ForYouItem/>}/>
           <Route path="/shopAll" element = {<ShopAllItem IdHandler = {IdHandler}/>} />
         </Routes>
-        <LoginPage loginStart = {loginStart} setLoginStart = {setLoginStart}/>
+        <LoginPage loginStart = {loginStart} setLoginStart = {setLoginStart} loginSuccess={loginSuccess} setLoginSuccess={setLoginSuccess} forgotPass={forgotPass} forgotPssHandler={forgotPssHandler}/>
         <Massege/>
       </BrowserRouter>
     </>

@@ -6,6 +6,7 @@ import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import { Toggle } from "./ToggleNav";
 import { IoCloseSharp } from "react-icons/io5";
+import { AccountInfoDropDown } from "./AccountInfoNav";
 
 export const Heading = (props) => {
   const [toggle, setToggle] = useState(false);
@@ -16,13 +17,27 @@ export const Heading = (props) => {
     { text: "SAVE MORE ON APP", link: "/savemore" },
     { text: "BECOME A SELLER", link: "/becomeseller" },
     { text: "HELP & SUPPORT", link: "/support" },
-    { text: "LOGIN"},
+    { text: "LOGIN" },
     { text: "SIGN UP" },
     { text: "LANGUAGE" },
   ];
+  props.loginSuccess
+    ? haderItem.splice(3, 2, { text: "JHZEHAN'S ACCOUNT" })
+    : "";
+  const [accountInfo, setAccountInfo] = useState(false);
   const LoginLink = (e) => {
-    e.target.innerText == "LOGIN" ? props.setLoginStart(true) : props.setLoginStart(false)
+    e.target.innerText == "LOGIN"
+      ? props.setLoginStart(true)
+      : props.setLoginStart(false);
+
+    e.target.innerText == "JHZEHAN'S ACCOUNT" ? setAccountInfo(!accountInfo) : setAccountInfo(false);
+
+
+  };
+  const LeaveTrack  = () => {
+    setAccountInfo(false)
   }
+
   return (
     <>
       <div className={`fixed w-full z-50`}>
@@ -33,10 +48,21 @@ export const Heading = (props) => {
               <div className=" hidden items-center justify-end font-roboto md:gap-5 gap-3 lg:gap-8 md:flex">
                 {haderItem.map(({ text, link }, i) => (
                   <div key={i}>
-                    <NavLink to={link} onClick={LoginLink}>
-                      <p className="text-white font-[400] text-[14px] hover:text-gray-200 transition uppercase">
+                    <NavLink to={link} onClick={LoginLink}  id={i}>
+                      <p className="text-white font-[400] text-[12.7px] hover:text-gray-200 transition uppercase">
                         {text}
+                        
                       </p>
+                      {text == "JHZEHAN'S ACCOUNT" ? (
+                          <div className={`${accountInfo ? "block" : "hidden"}`} onMouseLeave={LeaveTrack}>
+                            <AccountInfoDropDown/>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {
+                          
+                        }
                     </NavLink>
                   </div>
                 ))}
@@ -63,15 +89,16 @@ export const Heading = (props) => {
                   </Link>
                 </div>
                 <div className="flex md:hidden items-center gap-3">
-                  <p
-                    className="px-3 py-1 bg-gray-200 rounded-full "
-                  >
-                    <p className="text-gray-600 font-[400] text-[14px] transition duration-300 hover:text-gray-500 uppercase" onClick={LoginLink}>
+                  <p className="px-3 py-1 bg-gray-200 rounded-full ">
+                    <p
+                      className="text-gray-600 font-[400] text-[14px] transition duration-300 hover:text-gray-500 uppercase"
+                      onClick={LoginLink}
+                    >
                       Login
                     </p>
                   </p>
                   <p>
-                    <p className="text-white font-[400] text-[14px] hover:text-gray-200 transition uppercase" >
+                    <p className="text-white font-[400] text-[14px] hover:text-gray-200 transition uppercase">
                       sign up
                     </p>
                   </p>
@@ -93,11 +120,8 @@ export const Heading = (props) => {
           </div>
           <Toggle toggle={toggle} setToggle={setToggle} />
         </div>
-        
       </div>
-      <div className="h-20 md:h-36 w-full">
-
-        </div>
+      <div className="h-20 md:h-36 w-full"></div>
     </>
   );
 };
