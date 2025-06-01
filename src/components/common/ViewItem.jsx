@@ -58,7 +58,15 @@ function SamplePrevArrow(props) {
     </div>
   );
 }
-export const ViewItem = ({ productId }) => {
+export const ViewItem = ({
+  productId,
+  handleCartItems,
+  handleCart,
+  setloginStart,
+  load,
+  setLoad,
+  loginSuccess,
+}) => {
   //slider functionality
   const settings = {
     dots: false,
@@ -102,9 +110,22 @@ export const ViewItem = ({ productId }) => {
   const mouseLeave = () => {
     setHoverImgSrc(null);
   };
+
+  // items adding system
+  const AddToCart = () => {
+    handleCartItems(productId);
+    handleCart(productId);
+    setLoad(true);
+    loginSuccess
+      ? setLoad(false)
+      : setTimeout(() => {
+          setLoad(false);
+          setloginStart(true);
+        }, 300);
+  };
   return (
     <>
-    <CategoryHeader/>
+      <CategoryHeader />
       <div>
         <Container className="bg-white justify-between px-2 py-4 flex xl:flex-row  flex-col">
           <div className="flex md:flex-row flex-col gap-2 w-full xl:w-[70%] pb-6">
@@ -276,15 +297,28 @@ export const ViewItem = ({ productId }) => {
               </div>
 
               <div className="mt-12 flex items-center gap-3">
-                <BuyBTn className={"w-[40%]"} />
-                <SellBTn className={"w-[40%]"} />
+                <div className="w-[40%]" onClick={AddToCart}>
+                  <BuyBTn className={"w-full"} />
+                </div>
+                <div className="w-[40%]" onClick={AddToCart}>
+                  <SellBTn className={"w-full"} />
+                </div>
               </div>
             </div>
           </div>
           {/* location & product information */}
-         <ProductLeftInfos/>
+          <ProductLeftInfos />
         </Container>
-
+        {load ? (
+          <div className="absolute top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] h-12 w-12">
+            <img
+              src="https://img.lazcdn.com/g/tps/imgextra/i1/O1CN01dmW7OR1TUNRMBH0P4_!!6000000002385-1-tps-200-200.gif"
+              alt=""
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

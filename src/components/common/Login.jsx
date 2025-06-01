@@ -219,7 +219,7 @@ export const LoginPage = ({
         </div>
 
         <div className={`absolute transition duration-200 ease-linear top-0 w-full h-full ${forgotPass ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}>
-          <ForgotPass  forgotPssHandler={forgotPssHandler}/>
+          <ForgotPass  forgotPssHandler={forgotPssHandler} setLoginStart = {setLoginStart}/>
         </div>
       </div>
     </>

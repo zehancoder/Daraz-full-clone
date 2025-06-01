@@ -12,38 +12,92 @@ import { Massege } from "./components/common/Massege";
 import { ShopAllItem } from "./components/landingPage/LinkingPages/ShopAll";
 import { CommonFooter } from "./components/common/CommonFooter";
 import { LoginPage } from "./components/common/Login";
+import { CartWorking } from "./components/common/Cart";
 function App() {
-  const [productID, setProductID] = useState(null)
+  const [productID, setProductID] = useState(null);
 
   const IdHandler = (mainId) => {
-    setProductID(mainId)
-  }
+    setProductID(mainId);
+  };
 
   const [loginStart, setLoginStart] = useState(false);
 
-  const [loginSuccess, setLoginSuccess] = useState(null)
+  const [loginSuccess, setLoginSuccess] = useState(null);
 
   // add forgot password functionality
   const [forgotPass, setForgotPass] = useState(false);
   const forgotPssHandler = (ans) => {
     setForgotPass(ans);
   };
+
+  // adding items system
+  const [addingProduct, setAddingProduct] = useState([]);
+  const handleCartItems = (ids) => {
+    setAddingProduct((prev) => [...prev, ids]);
+  };
+
+  const [cartItems, setCartItems] = useState();
+  const handleCart = (mainItem) => {
+    setCartItems(mainItem);
+  };
+
+  console.log(cartItems);
+
+  const [load, setLoad] = useState(false);
+
   return (
     <>
-      <BrowserRouter >
-        <Heading setLoginStart = {setLoginStart} loginStart = {loginStart} loginSuccess={loginSuccess} />
+      <BrowserRouter>
+        <Heading
+          setLoginStart={setLoginStart}
+          loginStart={loginStart}
+          loginSuccess={loginSuccess}
+          addingItems={addingProduct}
+        />
         <Routes>
-          <Route path="/" element={<HeroSec IdHandler = {IdHandler}></HeroSec>} />
-          <Route path="/viewItem" element={<ViewItem productId ={productID}></ViewItem>}/>
-          <Route path="/forYouItem" element= {<ForYouItem/>}/>
-          <Route path="/shopAll" element = {<ShopAllItem IdHandler = {IdHandler}/>} />
+          <Route path="/" element={<HeroSec IdHandler={IdHandler}></HeroSec>} />
+          <Route
+            path="/viewItem"
+            element={
+              <ViewItem
+                productId={productID}
+                handleCartItems={handleCartItems}
+                handleCart={handleCart}
+                setloginStart={setLoginStart}
+                load={load}
+                setLoad={setLoad}
+                loginSuccess= {loginSuccess}
+              ></ViewItem>
+            }
+          />
+          <Route path="/forYouItem" element={<ForYouItem />} />
+          <Route
+            path="/shopAll"
+            element={<ShopAllItem IdHandler={IdHandler} />}
+          />
+          <Route
+            path="/cart"
+            element={
+              <CartWorking
+                productID={productID}
+                addingProduct={addingProduct}
+                cartItems={cartItems}
+              />
+            }
+          />
         </Routes>
-        <LoginPage loginStart = {loginStart} setLoginStart = {setLoginStart} loginSuccess={loginSuccess} setLoginSuccess={setLoginSuccess} forgotPass={forgotPass} forgotPssHandler={forgotPssHandler}/>
-        <Massege/>
+        <LoginPage
+          loginStart={loginStart}
+          setLoginStart={setLoginStart}
+          loginSuccess={loginSuccess}
+          setLoginSuccess={setLoginSuccess}
+          forgotPass={forgotPass}
+          forgotPssHandler={forgotPssHandler}
+        />
+        <Massege />
       </BrowserRouter>
     </>
   );
 }
 
 export default App;
- 

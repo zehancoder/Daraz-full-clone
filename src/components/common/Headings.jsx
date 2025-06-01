@@ -8,7 +8,7 @@ import { Toggle } from "./ToggleNav";
 import { IoCloseSharp } from "react-icons/io5";
 import { AccountInfoDropDown } from "./AccountInfoNav";
 
-export const Heading = (props) => {
+export const Heading = ( props) => {
   const [toggle, setToggle] = useState(false);
   const toggleNav = () => {
     setToggle(!toggle);
@@ -84,8 +84,9 @@ export const Heading = (props) => {
                       <IoSearchOutline />
                     </div>
                   </div>
-                  <Link className="cursor-pointer" to="/cart">
+                  <Link className="cursor-pointer relative" to="/cart">
                     <CiShoppingCart className="text-4xl text-white" />
+                    {props.loginSuccess ?  <p className="absolute -top-[0.4px] right-0.5 text-[#f85606] w-4 text-[12px] flex items-center justify-center rounded-full h-4 bg-white font-bold font-noto">{props.addingItems.length}</p> : console.log("hello")}
                   </Link>
                 </div>
                 <div className="flex md:hidden items-center gap-3">
