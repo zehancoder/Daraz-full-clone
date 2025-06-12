@@ -1,19 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import myData from "../../data/products.json";
 import { ProductCard } from "./ProductCard";
-export const CartWorking = ({ addingProduct, cartItems }) => {
+import { CategoryHeader } from "../CategoryHeader";
+import { CartCard } from "./CartItemCard";
 
-  
- 
+export const CartWorking = ({ addingProduct }) => {
+
+  let codes = 1;
   return (
     <>
-      <div>
+    <CategoryHeader/>
+      <div className=" ">
         {
-          addingProduct != "" ? <div className="absolute top-[50%]">{myData[ProductCard.forEach((ids) => {return ids})].text}</div>: console.log("hi")
+          addingProduct.map((ids) => (
+            <div className="mt-2">
+              {/* {
+                myData[ids].text
+              } */}
+
+              <CartCard img={myData[ids].img} text={myData[ids].text} codes={codes += codes} cateImg={Math.floor(Math.random() * 2)}/>
+            </div>
+
+            
+          ))
         }
       </div>
     </>
   );
 };
-
-

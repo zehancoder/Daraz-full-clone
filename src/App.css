@@ -151,3 +151,7 @@
 .formShadow{
   box-shadow: 0 0 400px 700px rgba(27, 27, 27, 0.589);
 }
+
+.cartShadow{
+  box-shadow: 0 10px 20px rgba(179, 177, 177, 0.212);
+}

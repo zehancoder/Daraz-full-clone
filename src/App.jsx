@@ -82,6 +82,7 @@ function App() {
                 productID={productID}
                 addingProduct={addingProduct}
                 cartItems={cartItems}
+                handleCart = {handleCart}
               />
             }
           />
