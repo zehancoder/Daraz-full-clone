@@ -54,7 +54,7 @@ export const Massege = () => {
           </div>
         </div>
         <div
-          className={`px-5 w-[165px] float-end flex items-center gap-3 py-2 bg-white text-lg md:text-xl shadows cursor-pointer ${
+          className={`px-5 w-[140px] md:w-[165px] float-end flex items-center gap-3 py-2 bg-white text-lg md:text-xl shadows cursor-pointer ${
             massegeBox ? "hidden" : "block"
           }`}
           onClick={massegeChange}

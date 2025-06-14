@@ -3,7 +3,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 import { CiShoppingCart } from "react-icons/ci";
 
-export const Toggle = ({toggle, setToggle}) => {
+export const Toggle = ({toggle, setToggle, cartLegth, loginSuccess}) => {
     const haderItem = [
         { text: "SAVE MORE ON APP", link: "/savemore" },
         { text: "BECOME A SELLER", link: "/becomeseller" },
@@ -17,7 +17,7 @@ export const Toggle = ({toggle, setToggle}) => {
       <div className={`absolute w-full top-full left-0 md:hidden block transition-all duration-300  transform ${toggle ? "translate-y-0 z-50" : "-translate-y-[100%] -z-20"}`}>
         <Container className={"bg-[#f85606] px-2 py-4"}>
           <div>
-            <div className="items-center mb-3 justify-around font-roboto gap-5 md:flex">
+            <div className={`items-center mb-3 justify-around font-roboto gap-5 md:flex`}>
               {haderItem.map(({ text, link }, i) => (
                 <div key={i} className="mt-3">
                   <NavLink to={link}>
@@ -39,8 +39,9 @@ export const Toggle = ({toggle, setToggle}) => {
                   <IoSearchOutline />
                 </div>
               </div>
-              <Link className="cursor-pointer" to="/cart">
+              <Link className="cursor-pointer relative" to="/cart">
                 <CiShoppingCart className="text-4xl text-white" />
+                {loginSuccess ?  <p className="absolute -top-[0.4px] right-0.5 text-[#f85606] w-4 text-[12px] flex items-center justify-center rounded-full h-4 bg-white font-bold font-noto">{cartLegth}</p> : console.log("hello")}
               </Link>
             </div>
           </div>

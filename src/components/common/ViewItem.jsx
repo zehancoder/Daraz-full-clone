@@ -16,10 +16,6 @@ import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { BuyBTn, SellBTn } from "./ProductButtons";
-import { LazadaIcon } from "./Icons/LazadaIcons";
-import { CiLocationOn } from "react-icons/ci";
-import { CiDeliveryTruck } from "react-icons/ci";
-import { GiReceiveMoney } from "react-icons/gi";
 import { ProductLeftInfos } from "./ProductLeftInfo";
 import { CategoryHeader } from "../CategoryHeader";
 

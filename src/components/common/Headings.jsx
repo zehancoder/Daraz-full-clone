@@ -90,15 +90,15 @@ export const Heading = ( props) => {
                   </Link>
                 </div>
                 <div className="flex md:hidden items-center gap-3">
-                  <p className="px-3 py-1 bg-gray-200 rounded-full ">
+                  <p className={`px-3 py-1 bg-gray-200 rounded-full ${props.loginSuccess ? "hidden" : "block"}`}>
                     <p
-                      className="text-gray-600 font-[400] text-[14px] transition duration-300 hover:text-gray-500 uppercase"
+                      className={`text-gray-600 font-[400] text-[14px] transition duration-300 hover:text-gray-500 uppercase `}
                       onClick={LoginLink}
                     >
                       Login
                     </p>
                   </p>
-                  <p>
+                  <p className={`${props.loginSuccess ? "hidden" : "block"}`}>
                     <p className="text-white font-[400] text-[14px] hover:text-gray-200 transition uppercase">
                       sign up
                     </p>
@@ -119,7 +119,7 @@ export const Heading = ( props) => {
               </div>
             </Container>
           </div>
-          <Toggle toggle={toggle} setToggle={setToggle} />
+          <Toggle toggle={toggle} setToggle={setToggle} cartLegth = {props.addingItems.length} loginSuccess = {props.loginSuccess}/>
         </div>
       </div>
       <div className="h-20 md:h-36 w-full"></div>
