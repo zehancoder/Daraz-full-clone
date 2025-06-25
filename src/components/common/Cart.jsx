@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import myData from "../../data/products.json";
 import { ProductCard } from "./ProductCard";
 import { CategoryHeader } from "../CategoryHeader";
@@ -6,12 +6,35 @@ import { CartCard } from "./CartItemCard";
 import { Container } from "./Container";
 import { PiTrash } from "react-icons/pi";
 
-const removehandle = (removesItems) => {
-  console.log(removesItems)
-}
+const removehandle = () => {};
 
-export const CartWorking = ({ addingProduct }) => {
+export const CartWorking = ({ addingProduct, setAddingProduct }) => {
   let codes = 1;
+  let refId = useRef(null);
+  if (refId == "") {
+    refId = null;
+  }
+  const [removeItems, setRemoveItems] = useState();
+  const trashRemove = (e) => {
+    setRemoveItems(
+      /*(prev) => [...prev,*/ parseInt(
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .parentElement.parentElement.parentElement.parentElement.parentElement
+          .id
+      ) /*]*/
+    );
+    e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+  };
+  useEffect(() => {
+    // removeItems.map((mainIds) => {
+    setAddingProduct(addingProduct.filter((newIds) => newIds !== removeItems));
+    // });
+    addingProduct.length == 0 && setRemoveItems(null);
+  }, [removeItems]);
+
+  console.log("adding product length", addingProduct.length);
+  console.log("removes items", removeItems);
+
   return (
     <>
       <CategoryHeader />
@@ -45,14 +68,17 @@ export const CartWorking = ({ addingProduct }) => {
                 myData[ids].text
               } */}
 
-              <CartCard
-                img={myData[ids].img}
-                text={myData[ids].text}
-                codes={(codes += codes)}
-                cateImg={Math.floor(Math.random() * 2)}
-                price={myData[ids].price}
-                removehandle = {removehandle}
-              />
+              <div id={ids} ref={refId}>
+                <CartCard
+                  img={myData[ids].img}
+                  text={myData[ids].text}
+                  codes={(codes += codes)}
+                  cateImg={Math.floor(Math.random() * 2)}
+                  price={myData[ids].price}
+                  removehandle={removehandle}
+                  trashRemove={trashRemove}
+                />
+              </div>
             </div>
           ))}
         </div>

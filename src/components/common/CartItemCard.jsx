@@ -5,14 +5,11 @@ import { PiTrash } from "react-icons/pi";
 import { FaMinus } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 
-export const CartCard = ({ className, text, img, codes, cateImg, price, removehandle }) => {
+export const CartCard = ({ className, text, img, codes, cateImg, price, removehandle, trashRemove }) => {
   const [checkedTurn, setCheckedTurn] = useState(false);
-  const [removeItems, setRemoveItems] = useState([])
   const isChacked = (e) => {
     setCheckedTurn(!checkedTurn)
-    setRemoveItems((prev) =>{ [...prev, e.target.id]}) 
   };
-  console.log(removeItems)
   const categoryProduct = [
     "https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01y23xZt1u7vnF19f2u_!!6000000005991-2-tps-72-72.png_2200x2200q80.png_.webp",
     "https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01m9OC6a1UK86X51Dcq_!!6000000002498-2-tps-108-54.png_2200x2200q80.png_.webp",
@@ -89,7 +86,7 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
               </label>
             </div>
           </div>
-          <div className="bg-white flex  items-center px-1 md:px-2 py-2 md:py-4 gap-4">
+          <div className="bg-white flex  items-center px-1 md:px-2 py-2 md:py-4 gap-4" >
             <div className="flex items-center justify-between">
               <input
                 type="checkbox"
@@ -145,8 +142,12 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
                     ৳{Math.floor(Math.random() * 1000)}
                   </p>
                   <div className="flex items-center gap-2 text-[22px] md:text-[25px] font-light font-noto text-gray-400 mt-2">
-                    <CiHeart />
-                    <PiTrash className="text-xl" />
+                    <div>
+                      <CiHeart />
+                    </div>
+                    <div>
+                      <PiTrash className="text-xl cursor-pointer" onClick={trashRemove}/>
+                    </div>
                   </div>
                 </div>
                 <div>
