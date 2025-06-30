@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "../../classReplaceing/replace";
 import { CiHeart } from "react-icons/ci";
 import { PiTrash } from "react-icons/pi";
 import { FaMinus } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 
-export const CartCard = ({ className, text, img, codes, cateImg, price, removehandle, trashRemove }) => {
+export const CartCard = ({ className, text, img, codes, cateImg, price, removehandle, trashRemove, selectAll, storeHandle, storeId, setStore }) => {
   const [checkedTurn, setCheckedTurn] = useState(false);
-  const isChacked = (e) => {
-    setCheckedTurn(!checkedTurn)
+    const isChacked = (e) => {
+    setCheckedTurn(!checkedTurn);
+    e.target.checked ? storeHandle(parseInt(e.target.parentElement.parentElement.parentElement.parentElement.id)) : setStore(storeId.filter((ids) => parseInt(e.target.parentElement.parentElement.parentElement.parentElement.id) !== ids))
+    console.log(console.log(e.target.checked))
   };
   const categoryProduct = [
     "https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01y23xZt1u7vnF19f2u_!!6000000005991-2-tps-72-72.png_2200x2200q80.png_.webp",
     "https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01m9OC6a1UK86X51Dcq_!!6000000002498-2-tps-108-54.png_2200x2200q80.png_.webp",
   ];
+
+
 
   const brands = [
     "Sony",
@@ -64,6 +68,8 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
 
   };
 
+  
+
   return (
     <>
       <div className={cn("bg-white cartShadow", className)}>
@@ -73,7 +79,7 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
               type="checkbox"
               className="h-4 w-4 rounded"
               id={`selection${codes}`}
-              checked = {checkedTurn}
+              checked = {selectAll ? true :  checkedTurn}
               onClick={isChacked}
             />
             <div className="flex items-center  gap-2 cursor-pointer">
@@ -92,7 +98,7 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
                 type="checkbox"
                 className="h-4 w-4 rounded md:block hidden"
                 id={`selection${codes}`}
-                checked = {checkedTurn}
+                checked = {selectAll ? true : checkedTurn}
                 onClick={isChacked}
               />
             </div>
@@ -120,7 +126,7 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
                   <p className="text-[10px] md:text-[12px] mt-1 font-normal font-noto text-[#757575]">
                     {
                       <p>
-                        Brands:{" "}
+                                
                         {brands[Math.floor(Math.random() * brands.length)]},
                         Color:{" "}
                         {colors[Math.floor(Math.random() * colors.length)]}

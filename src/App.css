@@ -155,3 +155,7 @@
 .cartShadow{
   box-shadow: 0 10px 20px rgba(179, 177, 177, 0.212);
 }
+
+.fullShadow{
+  box-shadow:0 0 300px 800px rgba(0, 0, 0, 0.281);
+}

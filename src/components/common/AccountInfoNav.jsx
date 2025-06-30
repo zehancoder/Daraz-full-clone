@@ -9,7 +9,7 @@ import { CiLogout } from "react-icons/ci";
 export const AccountInfoDropDown = () => {
   return (
     <>
-      <div className="absolute mt-4 w-70 px-4 right-8 bg-white border border-gray-400 ">
+      <div className="absolute mt-4 w-70 px-4 right-8 bg-white border border-gray-400 z-50">
         <div className="relative px-3  py-8">
           <div className="absolute -top-1 left-[50%] transform -translate-x-[50%] rotate-[135deg] bg-white h-6 w-6 rounded-tr-full">
 

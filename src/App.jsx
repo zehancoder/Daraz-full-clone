@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ForYouItem } from "./components/landingPage/LinkingPages/ForyouItem";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ViewItem } from "./components/common/ViewItem";
 import { ForyouProduct } from "./components/landingPage/JustforYouProduct";
 import { Massege } from "./components/common/Massege";
@@ -32,9 +32,23 @@ function App() {
 
   // adding items system
   const [addingProduct, setAddingProduct] = useState([]);
+  const [NewId, setNewId] = useState();
   const handleCartItems = (ids) => {
-    setAddingProduct((prev) => [...prev, ids]);
+    setAddingProduct((prev) => [...prev, parseInt(ids)]);
+    setNewId(parseInt(ids))
   };
+
+  // remove same items
+  let [newItms, setNewItms] = useState();
+
+  useEffect(() => {
+    setNewItms(
+      addingProduct.filter((addingId) => parseInt(addingId) !== parseInt(addingId))
+    );
+    addingProduct.length == 0 && setNewId(0)
+  }, [addingProduct]);
+
+  console.log(newItms);
 
   const [cartItems, setCartItems] = useState();
   const handleCart = (mainItem) => {
@@ -45,9 +59,14 @@ function App() {
 
   const [load, setLoad] = useState(false);
 
+  // All select items
+
+  // bg dark when remove contain
+
+
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter >
         <Heading
           setLoginStart={setLoginStart}
           loginStart={loginStart}
@@ -66,7 +85,7 @@ function App() {
                 setloginStart={setLoginStart}
                 load={load}
                 setLoad={setLoad}
-                loginSuccess= {loginSuccess}
+                loginSuccess={loginSuccess}
               ></ViewItem>
             }
           />
@@ -82,8 +101,8 @@ function App() {
                 productID={productID}
                 addingProduct={addingProduct}
                 cartItems={cartItems}
-                handleCart = {handleCart}
-                setAddingProduct = {setAddingProduct}
+                handleCart={handleCart}
+                setAddingProduct={setAddingProduct}
               />
             }
           />
