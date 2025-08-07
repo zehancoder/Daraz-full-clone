@@ -1,15 +1,22 @@
 import { CiLocationOn } from "react-icons/ci";
 import mainItems from "../../data/products.json"
 import { useState } from "react";
-export const TotalPrice = ({addingProduct, storeId, selectAll}) => {
+export const TotalPrice = ({addingProduct, storeId, selectAll, setInputTurn}) => {
 
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState([0])
+
     const addingHandle = () => {
        
     }
     const storeHandle = () => {
+      
+        setInputTurn ? storeId.forEach((ids) => {
+          
+        }): ""
         
     }
+
+    console.log(storeId)
   return (
     <div className="bg-white w-full lg:w-[35%]">
       <div className="p-3 ">
@@ -32,7 +39,7 @@ export const TotalPrice = ({addingProduct, storeId, selectAll}) => {
                     {
                         
                         
-                        selectAll ? addingHandle() : storeHandle()
+                        
                         
                     }
                 </div>

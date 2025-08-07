@@ -5,19 +5,51 @@ import { PiTrash } from "react-icons/pi";
 import { FaMinus } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 
-export const CartCard = ({ className, text, img, codes, cateImg, price, removehandle, trashRemove, selectAll, storeHandle, storeId, setStore }) => {
+export const CartCard = ({
+  className,
+  text,
+  img,
+  codes,
+  cateImg,
+  price,
+  trashRemove,
+  selectAll,
+  storeHandle,
+  storeId,
+  setStore,
+  setInputTurn,
+}) => {
   const [checkedTurn, setCheckedTurn] = useState(false);
-    const isChacked = (e) => {
+
+  // selected items id track
+  const [selectedId, setSelectedId] = useState()
+
+  const isChacked = (e) => {
     setCheckedTurn(!checkedTurn);
-    e.target.checked ? storeHandle(parseInt(e.target.parentElement.parentElement.parentElement.parentElement.id)) : setStore(storeId.filter((ids) => parseInt(e.target.parentElement.parentElement.parentElement.parentElement.id) !== ids))
-    console.log(console.log(e.target.checked))
+   
+    e.target.checked
+      ? storeHandle(
+          parseInt(
+            e.target.parentElement.parentElement.parentElement.parentElement.id
+          )
+        )
+      : setStore(
+          storeId.filter(
+            (ids) =>
+              parseInt(
+                e.target.parentElement.parentElement.parentElement.parentElement
+                  .id
+              ) !== ids
+          )
+        );
   };
+  console.log(storeId);
   const categoryProduct = [
     "https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01y23xZt1u7vnF19f2u_!!6000000005991-2-tps-72-72.png_2200x2200q80.png_.webp",
     "https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01m9OC6a1UK86X51Dcq_!!6000000002498-2-tps-108-54.png_2200x2200q80.png_.webp",
   ];
 
-
+  setInputTurn(checkedTurn);
 
   const brands = [
     "Sony",
@@ -57,18 +89,23 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
 
   const [Itemquantity, setQuantity] = useState(1);
   const [quantityPlus, setQuantityPlus] = useState(price);
-  const quantityUp = () => {
+
+  const quantityUp = (e) => {
+     e.preventDefault();
     setQuantityPlus(parseInt(price) * (Itemquantity + 1));
 
     Itemquantity >= 15 ? setQuantity(15) : setQuantity(Itemquantity + 1);
+
+   console.log(parseInt(price) + parseInt(e.target.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerText.split('').slice(2, ).join('')))
   };
   const quantityDown = () => {
     Itemquantity == 1 ? setQuantity(1) : setQuantity(Itemquantity - 1);
-        parseInt(price) == quantityPlus ? setQuantityPlus(price) : setQuantityPlus(quantityPlus -  parseInt(price));
-
+    parseInt(price) == quantityPlus
+      ? setQuantityPlus(price)
+      : setQuantityPlus(quantityPlus - parseInt(price));
   };
 
-  
+  const storeNames = ["Next Gadget", "Canon Certified Store", "Lucky Dog", "Kenwood Bangladesh", "Aarong "]
 
   return (
     <>
@@ -79,7 +116,7 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
               type="checkbox"
               className="h-4 w-4 rounded"
               id={`selection${codes}`}
-              checked = {selectAll ? true :  checkedTurn}
+              checked={selectAll ? true : checkedTurn}
               onClick={isChacked}
             />
             <div className="flex items-center  gap-2 cursor-pointer">
@@ -88,17 +125,19 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
                 className="text-[14px] font-medium font-noto text-[#212121]"
                 for={`selection${codes}`}
               >
-                Next Gadget
+                {
+                  storeNames[Math.floor(Math.random() * storeNames.length)]
+                }
               </label>
             </div>
           </div>
-          <div className="bg-white flex  items-center px-1 md:px-2 py-2 md:py-4 gap-4" >
+          <div className="bg-white flex  items-center px-1 md:px-2 py-2 md:py-4 gap-4">
             <div className="flex items-center justify-between">
               <input
                 type="checkbox"
                 className="h-4 w-4 rounded md:block hidden"
                 id={`selection${codes}`}
-                checked = {selectAll ? true : checkedTurn}
+                checked={selectAll ? true : checkedTurn}
                 onClick={isChacked}
               />
             </div>
@@ -126,7 +165,6 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
                   <p className="text-[10px] md:text-[12px] mt-1 font-normal font-noto text-[#757575]">
                     {
                       <p>
-                                
                         {brands[Math.floor(Math.random() * brands.length)]},
                         Color:{" "}
                         {colors[Math.floor(Math.random() * colors.length)]}
@@ -141,6 +179,7 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
               </div>
               <div className="mb-3 md:ml-4 flex items-center md:justify-start justify-center gap-4 md:gap-[5%] lg:gap-[30%] w-full md:w-[40%]">
                 <div>
+                  {/* /*price*/}
                   <p className="text-lg md:text-xl font-noto font-medium text-[#f57224]">
                     ৳ {quantityPlus}
                   </p>
@@ -151,8 +190,11 @@ export const CartCard = ({ className, text, img, codes, cateImg, price, removeha
                     <div>
                       <CiHeart />
                     </div>
-                    <div>
-                      <PiTrash className="text-xl cursor-pointer" onClick={trashRemove}/>
+                    <div  onClick={trashRemove}>
+                      <PiTrash
+                        className="text-xl cursor-pointer"
+                       
+                      />
                     </div>
                   </div>
                 </div>

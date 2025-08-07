@@ -1,6 +1,8 @@
 import { Container } from "./Container";
 import Slider from "react-slick";
 import myData from "../../data/products.json";
+import { IoCloseOutline } from "react-icons/io5";
+
 import {
   FaAngleLeft,
   FaAngleRight,
@@ -10,11 +12,9 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
-import { FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
 import { BuyBTn, SellBTn } from "./ProductButtons";
 import { ProductLeftInfos } from "./ProductLeftInfo";
 import { CategoryHeader } from "../CategoryHeader";
@@ -62,6 +62,8 @@ export const ViewItem = ({
   load,
   setLoad,
   loginSuccess,
+  addingMassege,
+  setaddingMassege
 }) => {
   //slider functionality
   const settings = {
@@ -119,6 +121,10 @@ export const ViewItem = ({
           setloginStart(true);
         }, 300);
   };
+  // item added massege
+  const addedHandle =() => {
+    loginSuccess && setaddingMassege(true)
+  }
   return (
     <>
       <CategoryHeader />
@@ -315,6 +321,20 @@ export const ViewItem = ({
         ) : (
           ""
         )}
+
+        <div
+          className={`absolute transform  top-[30%] left-[50%] -translate-x-[50%] -translate-y-[30%]   ${
+            addingMassege ? "hidden" : "block fullShadow"
+          }`}
+        >
+          <div className="relative w-[60vw] md:py-16 bg-white z-50">
+            <p className="flex gap-2 items-center  md:py-3 py-6 border border-gray-300 md:px-7 px-5 text-[#4caf50] font-normal text-[15px] md:text-xl">
+            <img className="w-4 md:w-6" src="/images/icons/added.png" alt="" />
+            Added to cart successfully!
+          </p>
+          <IoCloseOutline className="absolute top-4 right-4 md:text-2xl text-xl" onClick={addedHandle}/>
+          </div>
+        </div>
       </div>
     </>
   );

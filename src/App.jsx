@@ -32,23 +32,27 @@ function App() {
 
   // adding items system
   const [addingProduct, setAddingProduct] = useState([]);
-  const [NewId, setNewId] = useState();
+  const [addingMassege, setaddingMassege] = useState(true)
+  // const [NewId, setNewId] = useState();
   const handleCartItems = (ids) => {
     setAddingProduct((prev) => [...prev, parseInt(ids)]);
-    setNewId(parseInt(ids))
+    setaddingMassege(false)
+    setAddingProduct((prev) => [...new Set(prev)]);
+    // setNewId(parseInt(ids))
   };
+  console.log(addingProduct)
 
   // remove same items
-  let [newItms, setNewItms] = useState();
+  // let [newItms, setNewItms] = useState();
 
-  useEffect(() => {
-    setNewItms(
-      addingProduct.filter((addingId) => parseInt(addingId) !== parseInt(addingId))
-    );
-    addingProduct.length == 0 && setNewId(0)
-  }, [addingProduct]);
+  // useEffect(() => {
+  //   setNewItms(
+  //     addingProduct.filter((addingId) => parseInt(addingId) !== parseInt(addingId))
+  //   );
+  //   addingProduct.length == 0 && setNewId(0)
+  // }, [addingProduct]);
 
-  console.log(newItms);
+  // console.log(newItms);
 
   const [cartItems, setCartItems] = useState();
   const handleCart = (mainItem) => {
@@ -86,6 +90,8 @@ function App() {
                 load={load}
                 setLoad={setLoad}
                 loginSuccess={loginSuccess}
+                setaddingMassege = {setaddingMassege}
+                addingMassege = {addingMassege}
               ></ViewItem>
             }
           />

@@ -16,6 +16,7 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
   if (refId == "") {
     refId = null;
   }
+  // remove cart items with trash button
   const [removeItems, setRemoveItems] = useState();
   const trashRemove = (e) => {
     setRemoveItems(
@@ -25,7 +26,7 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
           .id
       ) /*]*/
     );
-    e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+    // e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
   };
   useEffect(() => {
     // removeItems.map((mainIds) => {
@@ -35,7 +36,8 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
   }, [removeItems]);
   const [selectAll, setSelectAll] = useState(false);
 
-  const selectHandle = () => {
+  const selectHandle = (e) => {
+    // e.preventDefault()
     setSelectAll(!selectAll);
   };
 
@@ -71,7 +73,10 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
     setStoreId((prev) => [...prev, ids]);
   };
 
-  console.log(storeId)
+
+
+  // input turn access
+  const [inputTurn, setInputTurn] = useState(false)
   return (
     <>
       <CategoryHeader />
@@ -124,6 +129,7 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
 
                 <div id={ids} ref={refId}>
                   <CartCard
+                   
                     storeHandle={storeHandle}
                     storeId = {storeId}
                     setStore={setStoreId}
@@ -135,6 +141,7 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
                     removehandle={removehandle}
                     trashRemove={trashRemove}
                     selectAll={selectAll}
+                    setInputTurn = {setInputTurn}
                   />
                 </div>
               </div>
@@ -176,7 +183,7 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
             }
           </div>
         </div>
-        <TotalPrice addingProduct={addingProduct} storeId = {storeId} selectAll = {selectAll}/>
+        <TotalPrice addingProduct={addingProduct} storeId = {storeId} selectAll = {selectAll} setInputTurn = {setInputTurn}/>
       </div>
     </>
   );
