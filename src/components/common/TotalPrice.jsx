@@ -16,7 +16,6 @@ export const TotalPrice = ({addingProduct, storeId, selectAll, setInputTurn}) =>
         
     }
 
-    console.log(storeId)
   return (
     <div className="bg-white w-full lg:w-[35%]">
       <div className="p-3 ">

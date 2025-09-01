@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "../../classReplaceing/replace";
 import { CiHeart } from "react-icons/ci";
 import { PiTrash } from "react-icons/pi";
@@ -18,15 +18,21 @@ export const CartCard = ({
   storeId,
   setStore,
   setInputTurn,
+  ids
 }) => {
   const [checkedTurn, setCheckedTurn] = useState(false);
 
   // selected items id track
-  const [selectedId, setSelectedId] = useState()
+  const [totalPriceArr, setTotalPriceArr] = useState([]);
+
+
+
+  // making ref for track price text
+
 
   const isChacked = (e) => {
     setCheckedTurn(!checkedTurn);
-   
+
     e.target.checked
       ? storeHandle(
           parseInt(
@@ -42,8 +48,73 @@ export const CartCard = ({
               ) !== ids
           )
         );
+
+       
+
+      handleAddItem({
+      id: e.target.parentElement.parentElement.parentElement.parentElement.id,
+      targetPrice:
+        parseInt(
+          e.target.parentElement.parentElement.lastElementChild.lastElementChild.lastElementChild.firstElementChild.firstElementChild.innerText
+            .split(" ")
+            .slice(1)
+            .toString()
+        ) *
+        parseInt(
+          e.target.parentElement.parentElement.lastElementChild
+            .lastElementChild.lastElementChild.lastElementChild
+            .firstElementChild.firstElementChild.nextElementSibling.innerText
+        ),
+    })
+
+    // setTotalPriceArr((prev) => [...prev, {id: ids, price: forPrice.current.innerText}])
+    // handleAddItem({id: ids, price: forPrice.current.innerText})
+
+    // setTotalPriceArr((prev) => [
+    //   ...prev,
+    //   {
+    //     id: e.target.parentElement.parentElement.parentElement.parentElement.id,
+    //     targetPrice:
+    //       parseInt(
+    //         e.target.parentElement.parentElement.lastElementChild.lastElementChild.lastElementChild.firstElementChild.firstElementChild.innerText
+    //           .split(" ")
+    //           .slice(1)
+    //           .toString()
+    //       ) *
+    //       parseInt(
+    //         e.target.parentElement.parentElement.lastElementChild
+    //           .lastElementChild.lastElementChild.lastElementChild
+    //           .firstElementChild.firstElementChild.nextElementSibling.innerText
+    //       ),
+    //   },
+    // ]);
   };
-  console.log(storeId);
+
+
+
+    let handleAddItem = (newItem) => {
+    setTotalPriceArr((prev) => {
+      // আগে চেক করো এই id এর object আছে কিনা
+      const alreadyExist = prev.find((item) => item.id === newItem.id);
+
+      if (alreadyExist) {
+        // থাকলে আগেরটা replace করবো বা quantity update করতে পারি
+        return prev.map((item) =>
+          item.id === newItem.id ? newItem : item
+        );
+      } else {
+        // না থাকলে নতুনটা add করবো
+        return [...prev, newItem];
+      }
+    });
+  };
+
+  console.log(totalPriceArr);
+
+
+
+
+
   const categoryProduct = [
     "https://img.lazcdn.com/g/tps/imgextra/i3/O1CN01y23xZt1u7vnF19f2u_!!6000000005991-2-tps-72-72.png_2200x2200q80.png_.webp",
     "https://img.lazcdn.com/g/tps/imgextra/i2/O1CN01m9OC6a1UK86X51Dcq_!!6000000002498-2-tps-108-54.png_2200x2200q80.png_.webp",
@@ -91,12 +162,20 @@ export const CartCard = ({
   const [quantityPlus, setQuantityPlus] = useState(price);
 
   const quantityUp = (e) => {
-     e.preventDefault();
+    e.preventDefault();
     setQuantityPlus(parseInt(price) * (Itemquantity + 1));
 
     Itemquantity >= 15 ? setQuantity(15) : setQuantity(Itemquantity + 1);
 
-   console.log(parseInt(price) + parseInt(e.target.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerText.split('').slice(2, ).join('')))
+    console.log(
+      parseInt(price) +
+        parseInt(
+          e.target.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerText
+            .split("")
+            .slice(2)
+            .join("")
+        )
+    );
   };
   const quantityDown = () => {
     Itemquantity == 1 ? setQuantity(1) : setQuantity(Itemquantity - 1);
@@ -105,7 +184,13 @@ export const CartCard = ({
       : setQuantityPlus(quantityPlus - parseInt(price));
   };
 
-  const storeNames = ["Next Gadget", "Canon Certified Store", "Lucky Dog", "Kenwood Bangladesh", "Aarong "]
+  const storeNames = [
+    "Next Gadget",
+    "Canon Certified Store",
+    "Lucky Dog",
+    "Kenwood Bangladesh",
+    "Aarong ",
+  ];
 
   return (
     <>
@@ -125,21 +210,19 @@ export const CartCard = ({
                 className="text-[14px] font-medium font-noto text-[#212121]"
                 for={`selection${codes}`}
               >
-                {
-                  storeNames[Math.floor(Math.random() * storeNames.length)]
-                }
+                {storeNames[Math.floor(Math.random() * storeNames.length)]}
               </label>
             </div>
           </div>
           <div className="bg-white flex  items-center px-1 md:px-2 py-2 md:py-4 gap-4">
             <div className="flex items-center justify-between">
-              <input
+              {/* <input
                 type="checkbox"
                 className="h-4 w-4 rounded md:block hidden"
                 id={`selection${codes}`}
                 checked={selectAll ? true : checkedTurn}
                 onClick={isChacked}
-              />
+              /> */}
             </div>
             <div className="flex gap-3 md:flex-row w-full flex-col md:items-start items-center">
               <div className="md:w-[60%] flex gap-3">
@@ -180,8 +263,8 @@ export const CartCard = ({
               <div className="mb-3 md:ml-4 flex items-center md:justify-start justify-center gap-4 md:gap-[5%] lg:gap-[30%] w-full md:w-[40%]">
                 <div>
                   {/* /*price*/}
-                  <p className="text-lg md:text-xl font-noto font-medium text-[#f57224]">
-                    ৳ {quantityPlus}
+                  <p className="text-lg md:text-xl font-noto font-medium text-[#f57224]" >
+                    ৳ {price}
                   </p>
                   <p className="text-sm line-through md:text-[15px] font-normal font-noto text-[#757575]">
                     ৳{Math.floor(Math.random() * 1000)}
@@ -190,11 +273,8 @@ export const CartCard = ({
                     <div>
                       <CiHeart />
                     </div>
-                    <div  onClick={trashRemove}>
-                      <PiTrash
-                        className="text-xl cursor-pointer"
-                       
-                      />
+                    <div onClick={trashRemove}>
+                      <PiTrash className="text-xl cursor-pointer" />
                     </div>
                   </div>
                 </div>

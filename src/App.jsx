@@ -7,10 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import { ViewItem } from "./components/common/ViewItem";
-import { ForyouProduct } from "./components/landingPage/JustforYouProduct";
 import { Massege } from "./components/common/Massege";
 import { ShopAllItem } from "./components/landingPage/LinkingPages/ShopAll";
-import { CommonFooter } from "./components/common/CommonFooter";
 import { LoginPage } from "./components/common/Login";
 import { CartWorking } from "./components/common/Cart";
 function App() {
@@ -36,7 +34,6 @@ function App() {
   // const [NewId, setNewId] = useState();
   const handleCartItems = (ids) => {
     setAddingProduct((prev) => [...prev, parseInt(ids)]);
-    setaddingMassege(false)
     setAddingProduct((prev) => [...new Set(prev)]);
     // setNewId(parseInt(ids))
   };
@@ -128,3 +125,7 @@ function App() {
 }
 
 export default App;
+
+
+
+

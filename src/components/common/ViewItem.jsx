@@ -120,6 +120,7 @@ export const ViewItem = ({
           setLoad(false);
           setloginStart(true);
         }, 300);
+       loginSuccess && setaddingMassege(false)
   };
   // item added massege
   const addedHandle =() => {
@@ -322,6 +323,8 @@ export const ViewItem = ({
           ""
         )}
 
+        
+{/* adding product massege */}
         <div
           className={`absolute transform  top-[30%] left-[50%] -translate-x-[50%] -translate-y-[30%]   ${
             addingMassege ? "hidden" : "block fullShadow"

@@ -73,10 +73,8 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
     setStoreId((prev) => [...prev, ids]);
   };
 
-
-
   // input turn access
-  const [inputTurn, setInputTurn] = useState(false)
+  const [inputTurn, setInputTurn] = useState(false);
   return (
     <>
       <CategoryHeader />
@@ -129,9 +127,9 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
 
                 <div id={ids} ref={refId}>
                   <CartCard
-                   
+                    ids = {ids}
                     storeHandle={storeHandle}
-                    storeId = {storeId}
+                    storeId={storeId}
                     setStore={setStoreId}
                     img={myData[ids].img}
                     text={myData[ids].text}
@@ -141,7 +139,7 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
                     removehandle={removehandle}
                     trashRemove={trashRemove}
                     selectAll={selectAll}
-                    setInputTurn = {setInputTurn}
+                    setInputTurn={setInputTurn}
                   />
                 </div>
               </div>
@@ -183,7 +181,12 @@ export const CartWorking = ({ addingProduct, setAddingProduct }) => {
             }
           </div>
         </div>
-        <TotalPrice addingProduct={addingProduct} storeId = {storeId} selectAll = {selectAll} setInputTurn = {setInputTurn}/>
+        <TotalPrice
+          addingProduct={addingProduct}
+          storeId={storeId}
+          selectAll={selectAll}
+          setInputTurn={setInputTurn}
+        />
       </div>
     </>
   );
