@@ -10,6 +10,8 @@ import { AccountInfoDropDown } from "./AccountInfoNav";
 import { ButtonOne } from "./Buttons";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
+import SearchFilter from "./SearchFilter";
+
 export const Heading = (props) => {
   const [toggle, setToggle] = useState(false);
   const [signForm, setSignUpForm] = useState(false);
@@ -49,6 +51,15 @@ export const Heading = (props) => {
   const signUpChackerHandle = () => {
     setSignUpForm(!signForm);
   };
+
+  //get input text
+  const [searchInput, setSearchInput] = useState("");
+  const [searchItems, setSearchItems] = useState([]);
+  const searchInputHandle = (e) => {
+    setSearchInput(e.target.value)
+  }
+
+  
 
   return (
     <>
@@ -184,16 +195,26 @@ export const Heading = (props) => {
                   alt=""
                 />
                 <div className="w-[70%] md:w-[65%] hidden md:flex justify-between items-center">
-                  <div className=" bg-white w-[87%] h-12 flex items-center justify-between">
+
+                  {/* make search filtering in this input */}
+                  <div className=" bg-white relative w-[87%] h-12 flex items-center justify-between">
                     <input
+                      onInput={searchInputHandle}
                       type="text"
                       className="px-2 w-full h-full outline-none"
                       placeholder="Search in Daraz"
+                      value={searchInput}
                     />
                     <div className="h-[100%] bg-[#ffe1d2] text-[#f57224] w-16 flex items-center justify-center text-[26px] font-light cursor-pointer">
                       <IoSearchOutline />
                     </div>
+                    {/* show search items */}
+                    <div className={`absolute top-[100%] left-0   w-full ${searchItems.length <= 0 ? "block" : "block"}`}>
+                      <SearchFilter searchItems= {searchItems} setSearchItems = {setSearchItems} searchInput = {searchInput}/>
+                    </div>
                   </div>
+
+
                   <Link className="cursor-pointer relative" to="/cart">
                     <CiShoppingCart className="text-4xl text-white" />
                     {props.loginSuccess ? (
