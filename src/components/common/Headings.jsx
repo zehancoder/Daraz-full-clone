@@ -56,10 +56,8 @@ export const Heading = (props) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchItems, setSearchItems] = useState([]);
   const searchInputHandle = (e) => {
-    setSearchInput(e.target.value)
-  }
-
-  
+    setSearchInput(e.target.value);
+  };
 
   return (
     <>
@@ -84,7 +82,6 @@ export const Heading = (props) => {
                 />
               </div>
               <div className="mt-2">
-                
                 <input
                   className="border outline-none text-[13px] md:text-[15px]  font-medium text-[#2e3346] font-noto border-[#cbced5] rounded-md w-full px-3 py-[11px] tracking-tighter"
                   type="text"
@@ -195,7 +192,6 @@ export const Heading = (props) => {
                   alt=""
                 />
                 <div className="w-[70%] md:w-[65%] hidden md:flex justify-between items-center">
-
                   {/* make search filtering in this input */}
                   <div className=" bg-white relative w-[87%] h-12 flex items-center justify-between">
                     <input
@@ -205,15 +201,29 @@ export const Heading = (props) => {
                       placeholder="Search in Daraz"
                       value={searchInput}
                     />
-                    <div className="h-[100%] bg-[#ffe1d2] text-[#f57224] w-16 flex items-center justify-center text-[26px] font-light cursor-pointer">
+                    <Link
+                      onClick={() => {
+                        props.handleSearchItems(searchItems);
+                        setSearchInput("")
+                      }}
+                      to={"/searchResult"}
+                      className="h-[100%] bg-[#ffe1d2] text-[#f57224] w-16 flex items-center justify-center text-[26px] font-light cursor-pointer"
+                    >
                       <IoSearchOutline />
-                    </div>
+                    </Link>
                     {/* show search items */}
-                    <div className={`absolute top-[100%] left-0   w-full ${searchItems.length <= 0 ? "block" : "block"}`}>
-                      <SearchFilter searchItems= {searchItems} setSearchItems = {setSearchItems} searchInput = {searchInput}/>
+                    <div
+                      className={`absolute top-[100%] left-0   w-full ${
+                        searchItems.length <= 0 ? "block" : "block"
+                      }`}
+                    >
+                      <SearchFilter
+                        searchItems={searchItems}
+                        setSearchItems={setSearchItems}
+                        searchInput={searchInput}
+                      />
                     </div>
                   </div>
-
 
                   <Link className="cursor-pointer relative" to="/cart">
                     <CiShoppingCart className="text-4xl text-white" />
@@ -243,7 +253,7 @@ export const Heading = (props) => {
                   <p
                     className={`${props.loginSuccess ? "hidden" : "block"}`}
                     onClick={() => {
-                      signUpChackerHandle()
+                      signUpChackerHandle();
                     }}
                   >
                     <p className="text-white font-[400] text-[14px] hover:text-gray-200 transition uppercase">

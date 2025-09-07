@@ -11,6 +11,7 @@ import { Massege } from "./components/common/Massege";
 import { ShopAllItem } from "./components/landingPage/LinkingPages/ShopAll";
 import { LoginPage } from "./components/common/Login";
 import { CartWorking } from "./components/common/Cart";
+import SearchFoundItems from "./components/common/SearchFoundItems";
 function App() {
   const [productID, setProductID] = useState(null);
 
@@ -30,14 +31,13 @@ function App() {
 
   // adding items system
   const [addingProduct, setAddingProduct] = useState([]);
-  const [addingMassege, setaddingMassege] = useState(true)
+  const [addingMassege, setaddingMassege] = useState(true);
   // const [NewId, setNewId] = useState();
   const handleCartItems = (ids) => {
     setAddingProduct((prev) => [...prev, parseInt(ids)]);
     setAddingProduct((prev) => [...new Set(prev)]);
     // setNewId(parseInt(ids))
   };
-  console.log(addingProduct)
 
   // remove same items
   // let [newItms, setNewItms] = useState();
@@ -60,15 +60,18 @@ function App() {
 
   const [load, setLoad] = useState(false);
 
-  // All select items
-
-  // bg dark when remove contain
-
+  // search filterign items
+  const [searchItems, setSearchItems] = useState([]);
+  const handleSearchItems = (item) => {
+    setSearchItems(item);
+  };
+  
 
   return (
     <>
-      <BrowserRouter >
+      <BrowserRouter>
         <Heading
+          handleSearchItems={handleSearchItems}
           setLoginStart={setLoginStart}
           loginStart={loginStart}
           loginSuccess={loginSuccess}
@@ -87,8 +90,8 @@ function App() {
                 load={load}
                 setLoad={setLoad}
                 loginSuccess={loginSuccess}
-                setaddingMassege = {setaddingMassege}
-                addingMassege = {addingMassege}
+                setaddingMassege={setaddingMassege}
+                addingMassege={addingMassege}
               ></ViewItem>
             }
           />
@@ -109,6 +112,10 @@ function App() {
               />
             }
           />
+          <Route
+            path="/searchResult"
+            element={<SearchFoundItems searchItems={searchItems} />}
+          />
         </Routes>
         <LoginPage
           loginStart={loginStart}
@@ -125,7 +132,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
