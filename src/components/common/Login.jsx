@@ -15,6 +15,13 @@ export const LoginPage = ({
   forgotPass,
   forgotPssHandler
 }) => {
+
+  // setup login funcitonality
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPass, setLoginPass] = useState('');
+
+
+
   const [passInput, setPassInput] = useState([]);
   let password = "12345678";
   const inputpassTrack = (e) => {
