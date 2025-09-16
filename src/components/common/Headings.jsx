@@ -14,10 +14,9 @@ export const Heading = (props) => {
   const [toggle, setToggle] = useState(false);
   const [signForm, setSignUpForm] = useState(false);
 
-    // setting user name
-    const [userName, setUserName] = useState("");
-    
 
+  // setting user name
+  const [userName, setUserName] = useState("");
 
   const toggleNav = () => {
     setToggle(!toggle);
@@ -31,7 +30,7 @@ export const Heading = (props) => {
     { text: "LANGUAGE" },
   ];
   props.loginSuccess || userName
-    ? haderItem.splice(3, 2, { text: userName.toUpperCase() })
+    ? haderItem.splice(3, 2, { text: userName ? userName.toUpperCase() : setUserName(prompt("set new User name"))})
     : "";
   const [accountInfo, setAccountInfo] = useState(false);
   const LoginLink = (e) => {
@@ -46,7 +45,7 @@ export const Heading = (props) => {
       ? setAccountInfo(!accountInfo)
       : setAccountInfo(false);
 
-      console.log(userName)
+    console.log(userName);
   };
   const LeaveTrack = () => {
     setAccountInfo(false);
@@ -59,13 +58,20 @@ export const Heading = (props) => {
     setSearchInput(e.target.value);
   };
 
-
-
   return (
     <>
       <div className={`fixed w-full z-40 font-noto`}>
         {/* SIGN UP FORM STARTR */}
-        <SignUp signForm={signForm} setSignUpForm={setSignUpForm} userName= {userName} setUserName = {setUserName}/>
+        <SignUp
+          signForm={signForm}
+          setSignUpForm={setSignUpForm}
+          userName={userName}
+          setUserName={setUserName}
+          signUpMassege = {props.signUpMassege}
+          setSignUpMassege = {props.setSignUpMassege}
+          setMassegeText = {props.setMassegeText}
+          massegeText = {props.massegeText}
+        />
 
         <div className="relative">
           <div className="w-full h-20 md:h-36 py-1 px-2 bg-[#f85606]">
@@ -165,7 +171,7 @@ export const Heading = (props) => {
                   <p
                     onClick={LoginLink}
                     className={`${
-                      props.loginSuccess  ? "hidden" : "block"
+                      props.loginSuccess ? "hidden" : "block"
                     } text-white bg-red-500 font-[400] text-[14px] hover:text-gray-200 transition`}
                   >
                     SIGN UP

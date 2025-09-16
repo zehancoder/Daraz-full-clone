@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const auth = getAuth(app);
 
-function SignUp({ signForm, setSignUpForm, userName, setUserName }) {
+function SignUp({ signForm, setSignUpForm, userName, setUserName, signUpMassege, setSignUpMassege, massegeText, setMassegeText }) {
   // user name input handle
   const [userNameInput, setUserNameInput] = useState("");
   // signup chacker functionlity
@@ -20,14 +20,13 @@ function SignUp({ signForm, setSignUpForm, userName, setUserName }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // signUp massege
-  const [signUpMassege, setSignUpMassege] = useState(false);
+  // // signUp massege
+  // const [signUpMassege, setSignUpMassege] = useState(false);
   // email or pass wrong msg
   const [wrongEmailPass, setWrongEmailPass] = useState(false);
   // envalid email massege
   const [envalidEmail, setEnvalidEmail] = useState(false);
-  // massege text
-  const [massegeText, setMassegeText] = useState("");
+
 
   // set up auth form
   const signUpUser = (e) => {
@@ -133,7 +132,7 @@ function SignUp({ signForm, setSignUpForm, userName, setUserName }) {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 className="border outline-none text-[13px] md:text-[15px]  font-medium text-[#2e3346] font-noto border-[#cbced5] rounded-md w-full px-3 py-[11px] tracking-tighter"
-                type="text"
+                type="password"
                 placeholder="Please enter your password"
                 required
               />

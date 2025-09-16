@@ -65,6 +65,14 @@ function App() {
   const handleSearchItems = (item) => {
     setSearchItems(item);
   };
+
+  
+  // login success and signup succes notification
+
+  const [signUpMassege, setSignUpMassege] = useState(false);
+
+    // login an sign Up massege text
+    const [massegeText, setMassegeText] = useState("");
   
 
   return (
@@ -76,6 +84,10 @@ function App() {
           loginStart={loginStart}
           loginSuccess={loginSuccess}
           addingItems={addingProduct}
+          signUpMassege = {signUpMassege}
+          setSignUpMassege = {setSignUpMassege}
+           massegeText ={ massegeText}
+          setMassegeText = {setMassegeText}
         />
         <Routes>
           <Route path="/" element={<HeroSec IdHandler={IdHandler}></HeroSec>} />
@@ -124,6 +136,10 @@ function App() {
           setLoginSuccess={setLoginSuccess}
           forgotPass={forgotPass}
           forgotPssHandler={forgotPssHandler}
+          signUpMassege = {signUpMassege}
+          setSignUpMassege = {setSignUpMassege}
+          massegeText ={ massegeText}
+          setMassegeText = {setMassegeText}
         />
         <Massege />
       </BrowserRouter>

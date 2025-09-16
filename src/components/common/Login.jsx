@@ -2,10 +2,14 @@ import { FaEye } from "react-icons/fa";
 import { RiEyeCloseFill } from "react-icons/ri";
 import { ButtonOne } from "./Buttons";
 import { Form, Link } from "react-router-dom";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { ForgotPass } from "./ForgotPass";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../firebaseApp/fireBase";
+
+const auth = getAuth(app);
 
 export const LoginPage = ({
   loginStart,
@@ -13,14 +17,38 @@ export const LoginPage = ({
   loginSuccess,
   setLoginSuccess,
   forgotPass,
-  forgotPssHandler
+  forgotPssHandler,
+  signUpMassege,
+  setSignUpMassege,
+  massegeText,
+  setMassegeText,
 }) => {
-
   // setup login funcitonality
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPass, setLoginPass] = useState('');
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPass, setLoginPass] = useState("");
 
+  const loginHandle = () => {
+    signInWithEmailAndPassword(auth, loginEmail, loginPass)
+      .then((value) => {
+        setLoginStart(false);
+        setTimeout(() => {
+           setSignUpMassege(true)
 
+          setMassegeText("Successfully Login");
+          setTimeout(() => {
+            setSignUpMassege(false)
+          }, 2000)
+        }, 2000);
+        setLoginSuccess(true);
+      })
+      .catch(() => {
+        setMassegeText("Wrong email or password");
+      });
+
+    setTimeout(() => {
+      setSignUpMassege(false);
+    }, 2500);
+  };
 
   const [passInput, setPassInput] = useState([]);
   let password = "12345678";
@@ -63,8 +91,8 @@ export const LoginPage = ({
 
   // forgot password functionality
   const forgotPssHandler2 = () => {
-      forgotPssHandler(true)
-  }
+    forgotPssHandler(true);
+  };
   return (
     <>
       <div
@@ -72,7 +100,13 @@ export const LoginPage = ({
           loginStart ? "block formShadow z-50" : "hidden"
         } overflow-hidden`}
       >
-        <div className={`px-6 py-5 relative ${forgotPass ? "translate-y-full opacity-0" : "tranltey-100 opacity-100"}`}>
+        <div
+          className={`px-6 py-5 relative ${
+            forgotPass
+              ? "translate-y-full opacity-0"
+              : "tranltey-100 opacity-100"
+          }`}
+        >
           <div className="grid grid-cols-12 items-center ">
             <div
               className=" h-6 border-r-[0] border-[#e3e7f1] col-span-6"
@@ -106,6 +140,8 @@ export const LoginPage = ({
                   className="border outline-none text-[13px] md:text-[15px]  font-medium text-[#2e3346] font-noto border-[#cbced5] rounded-md w-full px-3 py-[13px] tracking-tighter"
                   type="email"
                   placeholder="Please enter your Phone or Email"
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  value={loginEmail}
                 />
                 <div
                   className={`flex justify-between items-center border-[#cbced5] border mt-2 md:mt-4 rounded-md w-full px-3 py-[13px] `}
@@ -114,8 +150,8 @@ export const LoginPage = ({
                     className=" outline-none text-[13px] md:text-[15px] w-[80%] font-medium text-[#2e3346] font-noto  tracking-tighter"
                     type={`${eye ? "password" : "text"}`}
                     placeholder="Please enter your password"
-                    value={passInput}
-                    onChange={inputpassTrack}
+                    onChange={(e) => setLoginPass(e.target.value)}
+                    value={loginPass}
                   />
                   <div className="bg-white flex text-[17px] md:text-[20px] text-[#a7a6a6]">
                     <FaEye
@@ -182,7 +218,7 @@ export const LoginPage = ({
             className={` transition mt-14 opacity-95 w-full bg-[#ff6c23] py-2 text-white font-noto font-medium uppercase text-[14px] md:text-[16px]  px-2 text-center rounded-md hover:opacity-100 cursor-pointer ${
               loginSystem ? "hidden" : "block"
             }`}
-            onClick={CheckLogin}
+            onClick={loginHandle}
           >
             Login
           </button>
@@ -222,11 +258,19 @@ export const LoginPage = ({
             className="absolute top-2 md:top-3 right-2 md:right-3 text-xl md:text-3xl text-[#a7a6a6] opacity-80"
             onClick={CloseLogin}
           />
-          
         </div>
 
-        <div className={`absolute transition duration-200 ease-linear top-0 w-full h-full ${forgotPass ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}>
-          <ForgotPass  forgotPssHandler={forgotPssHandler} setLoginStart = {setLoginStart}/>
+        <div
+          className={`absolute transition duration-200 ease-linear top-0 w-full h-full ${
+            forgotPass
+              ? "translate-y-0 opacity-100"
+              : "translate-y-full opacity-0"
+          }`}
+        >
+          <ForgotPass
+            forgotPssHandler={forgotPssHandler}
+            setLoginStart={setLoginStart}
+          />
         </div>
       </div>
     </>
