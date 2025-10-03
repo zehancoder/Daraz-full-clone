@@ -41,9 +41,9 @@ A feedback collection application using form handling in React.
 
 ## 📫 Contact Me
 
-- ✉️ Email: your-email@example.com
+- ✉️ Email: zehanjh93@gmail.com
 - 🌐 Portfolio Website: (if available)
-- 💼 LinkedIn: [Add your profile link]
+- 💼 LinkedIn: https://www.linkedin.com/in/jonaeed-hossen-a92a62330/
 
 ---
 
